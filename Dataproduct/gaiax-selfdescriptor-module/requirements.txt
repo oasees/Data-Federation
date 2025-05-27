@@ -1,0 +1,13 @@
+../code/app/local_wheels/datamite-1.0-py2.py3-none-any.whl
+uvicorn~=0.27.1
+fastapi~=0.109.2
+cryptography~=42.0.2
+requests~=2.31.0
+jwcrypto~=1.5.3
+PyLD~=2.0.3
+PyJWT~=2.8.0
+validators~=0.22.0
+neo4j~=5.13.0
+pydantic~=2.6.1
+pandas~=2.1.1
+orjson~=3.9.15

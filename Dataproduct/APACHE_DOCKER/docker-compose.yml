@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  
+
+  apache:
+   
+    build:
+      context: .
+      args:
+        BUILDKIT_INLINE_CACHE: 1 # For multistage docker
+    container_name: 'oasees-apache-container'
+#    hostname: 172.17.40.50
+
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - $HOME/apacheDir:/var/www/html/.well-known
+
+    networks:
+      - oasees
+
+
+   
+networks:
+  oasees:
+ 
+volumes:
+  app: {}
+  

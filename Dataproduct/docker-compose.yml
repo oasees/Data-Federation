@@ -1,0 +1,94 @@
+version: '3.5'
+
+services:
+  
+
+  apache:
+   
+    build:
+      context: ./APACHE_DOCKER
+      args:
+        BUILDKIT_INLINE_CACHE: 1 # For multistage docker
+    container_name: 'oasees-apache-container'
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - $HOME/apacheDir:/var/www/html/.well-known
+    extra_hosts:
+      - "gaiax.oasees.digital.tecnalia.dev:172.26.41.12"
+      - "oasees.tri.lan:172.26.41.12"
+    networks:
+      - oasees-network
+
+  gaiax_selfdescriptor_module:
+     container_name: gaiax_selfdescriptor_module
+     build:
+        context: ./gaiax-selfdescriptor-module
+     restart: always
+     env_file:
+       - oasees.env
+     volumes:
+       - ./gaiax-selfdescriptor-module:/code
+       - $HOME/apacheDir:/var/www/html/.well-known
+       - $HOME/neo4j/import:/var/lib/neo4j/import
+
+     extra_hosts:
+       - "gaiax.oasees.digital.tecnalia.dev:172.26.41.12"
+       - "oasees.tri.lan:172.26.41.12"
+
+
+     ports:
+       - 9102:8500
+
+     networks:
+       - oasees-network
+
+  neo4j:
+    image: neo4j:5.7.0
+    container_name: oasees_neo4j
+    restart: always
+    ports:
+      - 7474:7474
+      - 7687:7687
+    env_file:
+      - ./neo4j.env
+    volumes:
+      - $HOME/neo4j/data:/data
+      - $HOME/neo4j/logs:/logs
+      - $HOME/neo4j/import:/var/lib/neo4j/import
+      - $HOME/neo4j/plugins:/plugins
+    networks:
+      - oasees-network
+
+  postgres:
+     image: postgres:10.5
+     container_name: oasees_postgres
+     restart: always
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=12345
+#     logging:
+#       options:
+#         max-size: 10m
+#         max-file: "3"
+     ports:
+        - '5432:5432'
+
+     env_file:
+        - ./postgres.env
+     
+     volumes: 
+        - ./postgres-data:/var/lib/postgresql/data
+        # copy the sql script to create tables
+        - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+     networks:
+       - oasees-network 
+volumes:
+  app: {}
+
+networks:
+  oasees-network:
+    name: oasees-network
+    driver: bridge  

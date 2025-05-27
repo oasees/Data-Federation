@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/Catalogue/node_modules
+/Catalogue/.pnp
+/Catalogue/.pnp.js
+
+# testing
+/Catalogue/coverage
+
+# next.js
+/Catalogue/.next/
+/Catalogue/out/
+
+# production
+/Catalogue/build
+
+# misc
+/Catalogue/.DS_Store
+/Catalogue/*.pem
+
+# debug
+/Catalogue/npm-debug.log*
+/Catalogue/yarn-debug.log*
+/Catalogue/yarn-error.log*
+/Catalogue/.pnpm-debug.log*
+
+# local env files
+/Catalogue/.env*.local
+
+# vercel
+/Catalogue/.vercel
+
+# typescript
+/Catalogue/*.tsbuildinfo
+# next-env.d.ts
