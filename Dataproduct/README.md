@@ -168,7 +168,9 @@ oaM3qfBpOaTtGqcFJn3Hc649i+G04B+xIGBqSKBkKArQtSs5zUyKnHLsJqtDqC1F
 RoEnkJmWC7BV15CFdyBtng==
 -----END PRIVATE KEY-----"
 
-```
+``` 
+4.4 Execute docker composefile 
+--------------
 Once all necessary modifications have been made in the "Apache docker" folder and "oasees.env" file, execute the following command:
  ````
  docker-compose up -d -> if you don’t want to see the logs
