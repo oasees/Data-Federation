@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+  
+
+  loire_signer:
+     container_name: loire_signer
+
+     build:
+        context: .
+     restart: always
+     env_file:
+       - .env
+     volumes:
+       - ./:/code
+
+
+     ports:
+       - 9103:8500
+
+     networks:
+       - oasees-loire-network
+
+
+
+networks:
+  oasees-loire-network:
+    name: oasees-loire-network
+    driver: bridge  
