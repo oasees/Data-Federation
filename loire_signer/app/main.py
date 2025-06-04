@@ -47,7 +47,7 @@ app = FastAPI(lifespan=lifespan,title="Oasees", description=f"Oasees API documen
 
 
 
-@app.post("/enveloped-vc-array")
+@app.post("/generate_jwt_signed_vc")
 async def sign_vc_array(documents: list[dict])-> list[dict]:
 
     vc_jwts=[]
@@ -61,7 +61,7 @@ async def sign_vc_array(documents: list[dict])-> list[dict]:
         listEVC.append(envelopeCredential.model_dump(by_alias=True))
     return listEVC    
 
-@app.post("/enveloped-vc-array-to-vp")
+@app.post("/generete_jwt_signed_vp")
 async def vc_array_to_verifiable_presentation(enveloped_vc_array: list[dict] ) -> str:
 
     contextArray=[]
