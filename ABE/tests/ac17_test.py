@@ -23,7 +23,6 @@ class TestAC17Methods(unittest.TestCase):
         original_file = '<file_path>'
         endpath = '<encrypted_file_path>'
         decrypt_endpath = '<decrypted_file_path>'
-        setGroup('MNT224')
         policy = '(researcher OR therapist)'
         encryptFile(setup_parameters['pk'], original_file, endpath, policy)
         # The attributes MUST be declared in uppercase for key generation, but internal call formats the credentials to uppercase
