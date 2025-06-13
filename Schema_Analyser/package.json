@@ -1,0 +1,29 @@
+{
+  "name": "schema-analyser",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "clean": "rimraf dist",
+    "compile": "npm run clean; tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "tsx": "^4.19.2",
+    "vitest": "^2.1.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

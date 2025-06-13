@@ -1,0 +1,35 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "UC1 Verifiable Credential Schema",
+    "description": "Schema of a VC associated to an entity for the UC1",
+    "properties": {
+        "credentialSubject": {
+            "type":"object",
+            "properties": {
+                "role": {
+                    "enum": ["speech therapist", "doctor", "researcher"]
+                },
+                "organization": {
+                    "type":"object",
+                    "properties": {
+                        "institute": {
+                            "type": "string",
+                            "description": "Institute to which the owner is associated",
+                            "enum": ["cea"]
+                        },
+                        "hospital": {
+                            "type": "string",
+                            "description": "Hospital to which the owner is associated",
+                            "enum": ["hopale"]
+                        },
+                        "department": {
+                            "type": "string",
+                            "description": "Hospital to which the owner is associated",
+                            "enum": ["diasi", "neuroscience"]
+                        }
+                    }
+                }
+            }, "additionalProperties": false
+        }
+    }
+}
