@@ -10,8 +10,10 @@ The project provides a catalog service, a reference data product implementation,
 
 | Directory | Description |
 |----------|-------------|
+| **ABE/** | Python module for Attribute-Based Encryption. |
 | **Catalogue/** | Frontend application responsible for fetch and consume data products. |
 | **Dataproduct/** | API for generating and publishig gaia-X dataproducts based on Loire. |
+| **Schema Analyser/** | Component for analysing W3C Credential Schemas. |
 | **loire_signer/** | Python module for signing verifiable credentials ready for Loire. |
 |**README.md** | Project documentation. |
 
@@ -25,7 +27,14 @@ Languages used in the repository:
 
 ## 📚 Components Overview
 
-### **1. Catalogue**
+### **1. ABE**
+A Python module providing: 
+
+- ABE schemes and utils to encrypt different types of data
+
+---
+
+### **2. Catalogue**
 A TypeScript-based service that acts as the **central registry** for the federation.  
 Typical responsibilities include:
 
@@ -34,7 +43,7 @@ Typical responsibilities include:
 
 ---
 
-### **2. Dataproduct**
+### **3. Dataproduct**
 A reference implementation of Gaia-x based dataproducts.
 
 - API exposure  
@@ -46,7 +55,14 @@ Use this module as a template for building new data products.
 
 ---
 
-### **3. loire_signer**
+### **4. Schema Analyser**
+A TypeScript-based service that allows for:
+
+- Analysing and verifying credential against schemas accessible by url or stored locally.
+
+---
+
+### **5. loire_signer**
 A Python module providing:
 
 - API for signing verifiable presentation for Loire
@@ -57,8 +73,8 @@ A Python module providing:
 
 Depending on the module you want to run:
 
-- **Node.js** (Catalogue, Dataproduct)
-- **Python 3.10+** (loire_signer)
+- **Node.js** (Catalogue, Dataproduct, Schema Analyser)
+- **Python 3.10+** (ABE, loire_signer)
 - **Docker** (optional, for containerized deployment)
 - **Make** (optional, for automation scripts)
 
